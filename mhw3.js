@@ -220,6 +220,12 @@ function search(event){
     });
 }
 
+function nascondiSearch(){
+    const hiddenLayer = document.getElementById('search-results');
+    if(!hiddenLayer.classList.contains('hidden')){
+        hiddenLayer.classList.add('hidden');
+    }
+}
 
 
 
@@ -285,3 +291,6 @@ fetch('https://api.imgur.com/oauth2/token', {
 
 const searchButton = document.getElementById('nav-search-button');
 searchButton.addEventListener('click', search);
+
+const page = document.getElementById('page-content');
+page.addEventListener('click', nascondiSearch); 
