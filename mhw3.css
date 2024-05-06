@@ -604,8 +604,8 @@ header nav div{
     position: absolute;
     left: 375px;
     top: 50px;
-    width: 390px;
-    padding: 10px 5px;
+    width: auto;
+    padding: 10px 10px;
     background-color: white;
     z-index: 20;
 }
