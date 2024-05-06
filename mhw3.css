@@ -602,9 +602,9 @@ header nav div{
 
 #search-results{
     position: absolute;
-    left: 440px;
+    left: 375px;
     top: 50px;
-    width: 325px;
+    width: 390px;
     padding: 10px 5px;
     background-color: white;
     z-index: 20;
