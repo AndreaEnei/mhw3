@@ -343,7 +343,7 @@ header nav div{
     position: fixed;
     height: 100%;
     width: 100%;
-    top: 0px;
+    top: 90px;
     background-color: rgba(0, 0, 0,0.56);
     z-index: 5;
     left: 0px;
@@ -600,3 +600,12 @@ header nav div{
     border-radius: 4px;
 }
 
+#search-results{
+    position: absolute;
+    left: 440px;
+    top: 50px;
+    width: 325px;
+    padding: 10px 5px;
+    background-color: white;
+    z-index: 20;
+}

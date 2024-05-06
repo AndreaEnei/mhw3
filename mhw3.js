@@ -174,6 +174,52 @@ function onJsonImg(json){
 
 
 
+function onJson(json){
+    const libri = json.docs; 
+    displayResults(libri);
+}
+
+function displayResults(libri) {
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; 
+    let num_results = libri.length;
+
+    if(num_results > 10)
+    num_results = 10;
+
+    if (libri.length === 0) {
+        resultsContainer.textContent = 'Nessun libro trovato.';
+        return;
+    }
+
+    for(let i=0; i<num_results; i++){
+        const libro = libri[i];
+        const listItem = document.createElement('div');
+        listItem.textContent = libro.title + (libro.author_name ? ' by ' + libro.author_name.join(', ') : '');
+        resultsContainer.appendChild(listItem);
+    }
+
+}
+
+
+function onResponse(response){
+    return response.json();
+}
+
+function search(event){
+    const hiddenLayer = document.getElementById('search-results');
+    hiddenLayer.classList.remove('hidden');
+    const ricerca_input = document.getElementById('nav-search-box').value;
+    const ricerca_value = encodeURIComponent(ricerca_input);
+
+    const url = 'https://openlibrary.org/search.json?q=' + ricerca_value;
+
+    fetch(url).then(onResponse).then(onJson).catch(error => {
+        console.error('Error fetching the data:', error);
+        alert('Errore nella ricerca dei libri.');
+    });
+}
+
 
 
 
@@ -237,4 +283,5 @@ fetch('https://api.imgur.com/oauth2/token', {
 }).then(onTokenResponse).then(getToken);
 
 
-
+const searchButton = document.getElementById('nav-search-button');
+searchButton.addEventListener('click', search);
